@@ -1,0 +1,101 @@
+{
+  "name": "AwesomeTSProject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint --ext .jsx --ext .js --ext .tsx --ext .ts src/",
+    "lint:fix": "eslint --ext .jsx --ext .js --ext .tsx --ext .ts src/ --fix",
+    "prettier:write": "npx prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "clean": "rm -rf node_modules rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
+    "clean:all": "npm run build:clean && npm run clean",
+    "build:clean": "cd android && ./gradlew clean && npm run build:bundleClean",
+    "build:bundleClean": "cd android && rm -rf app/src/main/assets/index.android.bundle && rm -rf app/src/*/res/*/node_modules* && rm -rf app/src/*/res/*/src_assets* && cd ..",
+    "build:bundle": "react-native bundle --platform android --dev false --entry-file index.ts --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res --verbose",
+    "build:bundleDebug": "react-native bundle --platform android --dev true --entry-file index.ts --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res --verbose",
+    "build:assembleDebug": "npm run build:clean && npm run build:bundleDebug && cd android && ./gradlew assembleDebug && cd ..",
+    "build:assembleRelease": "npm run build:bundleClean && cd android && ./gradlew assembleRelease --stacktrace && cd ..",
+    "build:ios": "react-native bundle --entry-file='index.ts' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
+  },
+  "lint-staged": {
+    "*": [
+      "npm run lint:fix",
+      "npm run prettier:write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/viewpager": "^4.1.6",
+    "@react-navigation/drawer": "^5.9.2",
+    "@react-navigation/native": "^5.7.5",
+    "@react-navigation/stack": "^5.9.2",
+    "deepmerge": "^4.2.2",
+    "lodash": "^4.17.20",
+    "react": "16.13.1",
+    "react-native": "0.63.3",
+    "react-native-config": "^1.3.3",
+    "react-native-elements": "^2.3.2",
+    "react-native-gesture-handler": "^1.8.0",
+    "react-native-reanimated": "^1.13.1",
+    "react-native-safe-area-context": "^3.1.8",
+    "react-native-screens": "^2.11.0",
+    "react-native-vector-icons": "^7.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@types/jest": "^25.2.3",
+    "@types/react": "^16.9.50",
+    "@types/react-native": "^0.63.2",
+    "@types/react-native-elements": "^0.18.0",
+    "@types/react-native-vector-icons": "^6.4.6",
+    "@types/react-navigation": "^3.4.0",
+    "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-module-resolver": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.2.5",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.2.13",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.0.0",
+    "react-native-typescript-transformer": "^1.2.13",
+    "react-test-renderer": "16.13.1",
+    "typescript": "^3.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
