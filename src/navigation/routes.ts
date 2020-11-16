@@ -2,6 +2,7 @@
 enum AppRoute {
   // Stacks
   AppStack = 'AppStack',
+  AuthStack = 'AuthStack',
 
   // Screens
   // Welcome

@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import 'react-native-gesture-handler';
 import * as eva from '@eva-design/eva';
+import { ApplicationProvider } from '@ui-kitten/components';
 import React, { FC } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { ApplicationProvider } from '@ui-kitten/components';
 
 import store, { persistor } from '@store/index';
 import customThemeOverrides from '@styles/themes/custom-theme';

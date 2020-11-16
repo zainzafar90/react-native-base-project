@@ -1,8 +1,8 @@
-import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import AppRoute from 'navigation/routes';
 import { CombinedStackParamList } from 'navigation/type';
 
 export type HomeScreenProps = {
-  navigation: DrawerNavigationProp<CombinedStackParamList, AppRoute.Home>;
+  navigation: StackNavigationProp<CombinedStackParamList, AppRoute.Home>;
 };

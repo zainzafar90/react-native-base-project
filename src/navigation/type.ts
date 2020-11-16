@@ -5,6 +5,7 @@ export type CombinedStackParamList = RootStackParamList & AuthStackParamList & A
 
 export type RootStackParamList = {
   [AppRoute.AppStack]: undefined;
+  [AppRoute.AuthStack]: undefined;
 };
 
 export type AuthStackParamList = {
