@@ -16,12 +16,20 @@ const api = create({
 // --- Request/Response Interceptors --- //
 api.addRequestTransform((request) => {
   request.params = { ...request.params };
-  if (config.ENV === 'development') console.log('Request', request);
+  if (config.ENV === 'development') {
+    /* eslint-disable no-console */
+    console.log('Request', request);
+  }
+
   return request;
 });
 
 api.addResponseTransform((response) => {
-  if (config.ENV === 'development') console.log('Response', response);
+  if (config.ENV === 'development') {
+    /* eslint-disable no-console */
+    console.log('Request', response);
+  }
+
   return response;
 });
 

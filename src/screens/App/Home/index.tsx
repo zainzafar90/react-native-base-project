@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { Layout, Button } from '@ui-kitten/components';
 
 import { HomeScreenProps } from './types';
 
 const HomeScreen: FC<HomeScreenProps> = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Button>HOME</Button>
+    </Layout>
   );
 };
 

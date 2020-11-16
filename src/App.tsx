@@ -1,13 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import 'react-native-gesture-handler';
+import * as eva from '@eva-design/eva';
 import React, { FC } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'react-native-elements';
+import { ApplicationProvider } from '@ui-kitten/components';
 
 import store, { persistor } from '@store/index';
-import theme from '@styles/themes';
+import customThemeOverrides from '@styles/themes/custom-theme';
 
 import RootStackScreen from './navigation';
 
@@ -17,11 +19,11 @@ const App: FC = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
+        <ApplicationProvider {...eva} theme={{ ...eva.light, ...customThemeOverrides }}>
           <NavigationContainer>
             <RootStackScreen />
           </NavigationContainer>
-        </ThemeProvider>
+        </ApplicationProvider>
       </PersistGate>
     </Provider>
   );
